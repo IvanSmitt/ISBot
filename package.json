@@ -1,0 +1,22 @@
+{
+  "name": "isbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvanSmitt/ISBot.git"
+  },
+  "author": "Ivan_Smitt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IvanSmitt/ISBot/issues"
+  },
+  "homepage": "https://github.com/IvanSmitt/ISBot#readme",
+  "dependencies": {
+    "discord.js": "^12.4.1"
+  }
+}
