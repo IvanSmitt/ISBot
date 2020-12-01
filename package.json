@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/IvanSmitt/ISBot#readme",
   "dependencies": {
-    "discord.js": "^12.4.1"
+    "discord.js": "^12.4.1",
+    "xmlhttprequest": "^1.8.0"
   }
 }
