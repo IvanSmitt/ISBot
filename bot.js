@@ -216,7 +216,7 @@ function getPony(text, msg, count) {
 	for (i = 0; i < count; i++) {
 		try {
 			response = text.split('data-uris="{&quot;full&quot;:&quot;')[id + i].split("&quot;")[0];
-			const attach = new Discord.MessageAttachment(response.replace(/ /g, '%20'), "there_is_no_name" + response.substring(response.length - 3, response.length));
+			const attach = new Discord.MessageAttachment(response.replace(/ /g, '%20'), "there_is_no_name." + response.substring(response.length - 3, response.length));
 			msg.channel.send(attach);
 			//msg.channel.send(response.replace(/ /g, '%20'));
 		} catch (error) {
