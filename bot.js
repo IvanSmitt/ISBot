@@ -194,7 +194,8 @@ function GetLoliN(text, msg,count) {
 
 	for (i = 0; i < count; i++) {
 		try {
-			response = text.split('<ul id="post-list-posts">')[1].split('<div id="paginator">')[0].split('<a class="directlink')[id + i];		
+			response = text.split('<li style=')[id + i];
+			tags = response.split('Tags:')[1].split('User:')[0];
 			chunk = response.split('img" href="')[1].split('"')[0];
 
 			if (response.search("largeimg") !== -1) {
