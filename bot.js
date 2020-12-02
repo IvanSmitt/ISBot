@@ -6,6 +6,8 @@ const client = new Discord.Client();
 targt = getRandomInt(1000);
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
+VERSION = '1.4.12';
+
 const ponies = [
 	'Fluttershy',
 	'Rainbow Dash',
@@ -88,6 +90,9 @@ function gotMessage(msg) {
 			}
 			if (msg.content.substring(0, 5) === '!tags') {
 				return_tag(msg);
+			}
+			if (msg.content.substring(0, 8) === '!version') {
+				msg.channel.send("my version is: "+VERSION);
 			}
 			if (msg.content.substring(0, 5) === '!loli') {
 				try {
