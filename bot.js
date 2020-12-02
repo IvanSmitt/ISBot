@@ -52,6 +52,7 @@ function gotMessage(msg) {
 						}
 						msg.channel.send(`<@${msg.author.id}>\n> ${msg.content}`, { files: ['http://www.quickmeme.com/img/cf/cfe8938e72eb94d41bbbe99acad77a50cb08a95e164c2b7163d50877e0f86441.jpg'] })
 					}
+					tags='';
 					wipe()
 				}
 				else {
@@ -72,6 +73,7 @@ function gotMessage(msg) {
 						}
 						msg.channel.send(`<@${msg.author.id}>\n> ${msg.content}`, { files: ['http://www.quickmeme.com/img/cf/cfe8938e72eb94d41bbbe99acad77a50cb08a95e164c2b7163d50877e0f86441.jpg'] })
 					}
+					tags='';
 					wipe()
 				}
 				else {
