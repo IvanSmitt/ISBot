@@ -30,7 +30,7 @@ const when_answers = [
 ];
 
 client.login(process.env.BOT_TOKEN);
-
+tags='';
 client.on('ready', readyDiscord);
 client.on('message', gotMessage);
 
@@ -83,6 +83,9 @@ function gotMessage(msg) {
 			}
 			if (msg.content.substring(0, 5) === '!when') {
 				msg.channel.send(when_answers[Math.floor(Math.random() * when_answers.length)]);
+			}
+			if (msg.content.substring(0, 5) === '!tags') {
+				return_tag(msg);
 			}
 			if (msg.content.substring(0, 5) === '!loli') {
 				try {
@@ -215,7 +218,9 @@ function getPony(text, msg, count) {
 				id = parseInt(msg.content.split(" ")[3])
 	for (i = 0; i < count; i++) {
 		try {
-			response = text.split('data-uris="{&quot;full&quot;:&quot;')[id + i].split("&quot;")[0];
+			response = text.split('data-uris="{&quot;full&quot;:&quot;')[id + i];
+			tags = response.split('Tagged:')[1].split('">')[0];
+			response = response.split("&quot;")[0];
 			const attach = new Discord.MessageAttachment(response.replace(/ /g, '%20'), "there_is_no_name." + response.substring(response.length - 3, response.length));
 			msg.channel.send(attach);
 			//msg.channel.send(response.replace(/ /g, '%20'));
@@ -224,4 +229,9 @@ function getPony(text, msg, count) {
 			return;
 		}
 	}
+}
+
+function return_tag(msg)
+{
+	msg.channel.send("tags:"+tags);
 }
