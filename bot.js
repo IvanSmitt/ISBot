@@ -6,7 +6,7 @@ const client = new Discord.Client();
 targt = getRandomInt(1000);
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-VERSION = '1.4.13';
+VERSION = '1.4.14';
 
 const ponies = [
 	'Fluttershy',
@@ -241,5 +241,5 @@ function getPony(text, msg, count) {
 
 function return_tag(msg)
 {
-	msg.channel.send("tags:"+tags);
+	msg.channel.send("```tags:"+tags+"```");
 }
