@@ -30,7 +30,7 @@ const when_answers = [
 	'when you take your next sip of water',
 	'3... 2... 1... yep)'
 ];
-
+ 
 client.login(process.env.BOT_TOKEN);
 tags='';
 client.on('ready', readyDiscord);
