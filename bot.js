@@ -6,7 +6,7 @@ const client = new Discord.Client();
 targt = getRandomInt(1000);
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-VERSION = '1.4.14';
+VERSION = '1.4.15';
 
 const ponies = [
 	'Fluttershy',
@@ -93,6 +93,17 @@ function gotMessage(msg) {
 			}
 			if (msg.content.substring(0, 8) === '!version') {
 				msg.channel.send("my version is: "+VERSION);
+			}
+			if (msg.content.substring(0, 5) === '!meme') {
+				
+				link = 'https://www.reddit.com/r/memes/hot/';
+				try
+				{
+					response = httpGetAsyncNew(link,getMeme,msg,0);
+				}
+				catch(error){
+					msg.channel.send("Too huge for mee, try another request ");
+				}
 			}
 			if (msg.content.substring(0, 5) === '!loli') {
 				try {
@@ -236,6 +247,18 @@ function getPony(text, msg, count) {
 			msg.channel.send("I couldn't find it :(( maybe try again ");
 			return;
 		}
+	}
+}
+
+function getMeme(text, msg, count) {
+	try {
+		response = text.split('<img alt="Post image"')[1+getRandomInt(10)].split('src="')[1].split('">')[0];
+		const attach = new Discord.MessageAttachment(response.replace(/ /g, '%20'), "there_is_no_name.jpg");
+		msg.channel.send(attach);
+		//msg.channel.send(response.replace(/ /g, '%20'));
+	} catch (error) {
+		msg.channel.send("I couldn't find it :(( maybe try again ");
+		return;
 	}
 }
 
