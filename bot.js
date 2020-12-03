@@ -6,7 +6,7 @@ const client = new Discord.Client();
 targt = getRandomInt(1000);
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-VERSION = '1.4.15.2';
+VERSION = '1.4.15.3';
 
 const ponies = [
 	'Fluttershy',
@@ -252,8 +252,8 @@ function getPony(text, msg, count) {
 
 function getMeme(text, msg, count) {
 	try {
-		response = text.split('<img alt="Post image"')[1+getRandomInt(5)].split('src="')[1].split('">')[0];
-		const attach = new Discord.MessageAttachment('https://preview.redd.it/7viehke5xw261.jpg?width=640&crop=smart&auto=webp&s=20dd212706e682b3c9327a13e1c6d35017526394', "there_is_no_name.jpg");
+		//response = text.split('<img alt="Post image"')[1+getRandomInt(5)].split('src="')[1].split('">')[0];
+		const attach = new Discord.MessageAttachment('https://preview.redd.it/7viehke5xw261.jpg?width=640&crop=smart&auto=webp&s=20dd212706e682b3c9327a13e1c6d35017526394');
 		msg.channel.send(attach);
 		//msg.channel.send(response.replace(/ /g, '%20'));
 	} catch (error) {
