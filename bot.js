@@ -6,7 +6,7 @@ const client = new Discord.Client();
 targt = getRandomInt(1000);
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-VERSION = '1.5.0.0';
+VERSION = '1.5.0.1';
 
 const ponies = [
 	'Fluttershy',
@@ -94,7 +94,7 @@ function gotMessage(msg) {
 			if (msg.content.substring(0, 8) === '!version') {
 				msg.channel.send("my version is: "+VERSION);
 			}
-			if (msg.content.substring(0, 5) === '!tti') {
+			if (msg.content.substring(0, 4) === '!tti') {
 				link = 'https://www.google.com/search?tbm=isch&q=';
 				words = msg.content.split(' ');
 				attachs = [];
