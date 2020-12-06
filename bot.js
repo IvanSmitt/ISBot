@@ -6,7 +6,7 @@ const client = new Discord.Client();
 targt = getRandomInt(1000);
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-VERSION = '1.4.15.3';
+VERSION = '1.5.0.0';
 
 const ponies = [
 	'Fluttershy',
