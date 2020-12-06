@@ -94,15 +94,23 @@ function gotMessage(msg) {
 			if (msg.content.substring(0, 8) === '!version') {
 				msg.channel.send("my version is: "+VERSION);
 			}
-			if (msg.content.substring(0, 5) === '!meme') {
-				
-				link = 'https://www.reddit.com/r/memes/hot/';
-				try
-				{
-					response = httpGetAsyncNew(link,getMeme,msg,0);
+			if (msg.content.substring(0, 5) === '!tti') {
+				link = 'https://www.google.com/search?tbm=isch&q=';
+				words = msg.content.split(' ');
+				attachs = [];
+				for (i = 1; i < words.length; i++) {
+					try{
+						attachs[i-1] = httpGetAsyncCollect(link+words[i]);
+					}
+					catch(error){
+					}
 				}
-				catch(error){
-					msg.channel.send("Too huge for mee, try another request ");
+				for (i = 1; i < words.length; i++) {
+					try{
+						msg.send(attachs[i-1]);
+					}
+					catch(error){
+					}
 				}
 			}
 			if (msg.content.substring(0, 5) === '!loli') {
@@ -178,6 +186,23 @@ function getRandomInt(max) {
 }
 
 
+function httpGetAsyncCollect(theUrl, callback) {
+	try {
+		var xmlHttp = new XMLHttpRequest();
+		xmlHttp.onreadystatechange = function () {
+			if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+				return callback(xmlHttp.responseText);
+		}
+		xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+		xmlHttp.send(null);
+	}
+	catch (error) {
+		msg.channel.send("Something wrong with GET requests");
+		return null;
+    }
+}
+
+
 function httpGetAsyncNew(theUrl, callback, msg, c) {
 	try {
 		var xmlHttp = new XMLHttpRequest();
@@ -193,6 +218,12 @@ function httpGetAsyncNew(theUrl, callback, msg, c) {
     }
 }
 
+function CollectGoggle(text)
+{
+	response = text.split('img class=')[5].split('src="')[1].split('"')[0].replace(/ /g, '%20');
+	const attach = new Discord.MessageAttachment(response, "img.jpg");
+	return attach;
+}
 function GetLoliN(text, msg,count) {
 	if (count === 1)
 		id = 1 + getRandomInt(40);
@@ -250,17 +281,7 @@ function getPony(text, msg, count) {
 	}
 }
 
-function getMeme(text, msg, count) {
-	try {
-		//response = text.split('<img alt="Post image"')[1+getRandomInt(5)].split('src="')[1].split('">')[0];
-		const attach = new Discord.MessageAttachment('https://preview.redd.it/7viehke5xw261.jpg?width=640&crop=smart&auto=webp&s=20dd212706e682b3c9327a13e1c6d35017526394');
-		msg.channel.send(attach);
-		//msg.channel.send(response.replace(/ /g, '%20'));
-	} catch (error) {
-		msg.channel.send("I couldn't find it :(( maybe try again ");
-		return;
-	}
-}
+
 
 function return_tag(msg)
 {
