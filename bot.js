@@ -6,7 +6,7 @@ const client = new Discord.Client();
 targt = getRandomInt(1000);
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
-VERSION = '1.5.0.1';
+VERSION = '1.5.0.2';
 
 const ponies = [
 	'Fluttershy',
@@ -85,33 +85,14 @@ function gotMessage(msg) {
 			if (msg.content === '!Pony') {
 				msg.channel.send(ponies[Math.floor(Math.random() * ponies.length)]);
 			}
-			if (msg.content.substring(0, 5) === '!when') {
+			if (msg.content.substring(0, 5) === '/when') {
 				msg.channel.send(when_answers[Math.floor(Math.random() * when_answers.length)]);
 			}
 			if (msg.content.substring(0, 5) === '!tags') {
 				return_tag(msg);
 			}
-			if (msg.content.substring(0, 8) === '!version') {
+			if (msg.content.substring(0, 8) === '/version') {
 				msg.channel.send("my version is: "+VERSION);
-			}
-			if (msg.content.substring(0, 4) === '!tti') {
-				link = 'https://www.google.com/search?tbm=isch&q=';
-				words = msg.content.split(' ');
-				attachs = [];
-				for (i = 1; i < words.length; i++) {
-					try{
-						attachs[i-1] = httpGetAsyncCollect(link+words[i]);
-					}
-					catch(error){
-					}
-				}
-				for (i = 1; i < words.length; i++) {
-					try{
-						msg.send(attachs[i-1]);
-					}
-					catch(error){
-					}
-				}
 			}
 			if (msg.content.substring(0, 5) === '!loli') {
 				try {
