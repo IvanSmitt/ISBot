@@ -7,7 +7,6 @@ targt = getRandomInt(1000);
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 VERSION = '1.5.0.2';
-
 const ponies = [
 	'Fluttershy',
 	'Rainbow Dash',
@@ -39,7 +38,6 @@ client.on('message', gotMessage);
 function readyDiscord() {
 	console.log(`logged in! ${client.user.tag}!`);
 }
-
 function gotMessage(msg) {
 	try {
 		if (msg.channel.id === '778238197049065512' || msg.channel.id === '781662768130424836') {
