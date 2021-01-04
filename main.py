@@ -149,4 +149,4 @@ async def on_message(message):
                             await message.channel.send(
                                 'WTF? I cant send images of THAT sizes (if you REALLY need one contact my creator)')
 
-client.run(os.getenv('TOKEN'))
+client.run(os.getenv('BOT2_TOKEN'))
