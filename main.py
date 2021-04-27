@@ -164,7 +164,7 @@ async def on_message(message):
 
         ans=""
         for i in range(len(x1)):
-            ans+=x1[i]+"\n"+x3[i].replace(" Ди "," Зэ ").replace(" ди "," зэ ").replace("тф","ф").replace("Тф","Ф")+"\n"+x2[i]+"\n"+"\n"
+            ans+=x1[i]+"\n"+x3[i].replace(" Ди "," Зэ ").replace(" ди "," зэ ").replace("тф","ф").replace("Тф","Ф").replace(" Тын "," Финг ").replace(" тын "," финг ")+"\n"+x2[i]+"\n"+"\n"
         await message.channel.send(ans)
 
 
