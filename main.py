@@ -115,8 +115,9 @@ async def on_message(message):
 
     if message.content.startswith('/help '):
         text = message.content.strip('/help ')
+        await message.channel.send(ans)
         sentenses = text.split("\n")
-
+        
         t = googletrans.Translator()
        
         headers = {
