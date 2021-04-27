@@ -7,6 +7,7 @@ import requests
 import random
 from bs4 import BeautifulSoup
 from io import BytesIO
+import googletrans
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36",
@@ -111,6 +112,61 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
+
+    if message.content.startswith('/help '):
+        text = message.content.strip('/help ')
+        sentenses = text.split("\n")
+
+        t = googletrans.Translator()
+       
+        headers = {
+            'accept': "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+            'accept-encoding': "gzip, deflate, br",
+            'accept-language': "en,ru;q=0.9,hu;q=0.8,ru-RU;q=0.7,en-US;q=0.6",
+            'cache-control': "max-age=0",
+            'content-length': "1492",
+            'content-type': "application/x-www-form-urlencoded",
+            'origin': "https://englishforbusy.ru",
+            'referer': "https://englishforbusy.ru/transliterator/",
+            'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="90", "Google Chrome";v="90"',
+            'sec-ch-ua-mobile': "?0",
+            'sec-fetch-dest': "document",
+            'sec-fetch-mode': "navigate",
+            'sec-fetch-site': "same-origin",
+            'sec-fetch-user': "?1",
+            'upgrade-insecure-requests': "1",
+            'user-agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"
+
+        }
+
+        data = {
+            'action': 'bukvoed_form',
+            'redirect': 'https://englishforbusy.ru/transliterator/',
+            'message':'1. A force applied to a body causes it to move in a straight line.'
+        }
+
+
+
+
+
+        x1=[]
+        x2=[]
+        x3=[]
+        for s in sentenses:
+            s=s.strip("\n")
+            x1.append(s)
+            translated = t.translate(s, src='en', dest='ru')
+            x2.append(translated.text)
+            data['message']=s
+            r = requests.post('https://englishforbusy.ru/transliterator/', headers=headers, data=data)
+            x3.append(r.content.decode('UTF-8').split('name="result"')[1].split("<")[0].split(">")[1])
+
+        ans=""
+        for i in range(len(x1)):
+            ans+=x1[i]+"\n"+x3[i].replace(" Ди "," Зэ ").replace(" ди "," зэ ").replace("тф","ф").replace("Тф","Ф")+"\n"+x2[i]+"\n"+"\n"
+        await message.channel.send(ans)
+
+
 
     if message.content.startswith('/tti '):
         text = message.content.strip('/tti ')
