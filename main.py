@@ -114,7 +114,7 @@ async def on_message(message):
         return
 
     if message.content.startswith('/help '):
-        text = message.content[7:]
+        text = str(message.content)[7:]
         await message.channel.send(text+"\n")
         sentenses = text.split("\n")
         
@@ -170,7 +170,7 @@ async def on_message(message):
 
 
     if message.content.startswith('/tti '):
-        text = message.content[6:]
+        text = str(message.content)[6:]
         await message.channel.send('Searching Photos')
         get_all_images_async_lim(text,128)
         await message.channel.send('Combining into one image')
